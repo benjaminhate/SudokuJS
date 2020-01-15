@@ -9,9 +9,13 @@ function rowColToIndex(row, col, colNb = 9){
 }
 
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+    return array.sort(() => 0.5 - Math.random());
+}
+
+function generateWithoutValue(value){
+	return generateArray().filter(e => e != value);
+}
+
+function generateArray(){
+	return Array.from(Array(9)).map((_,i)=>i+1);
 }
