@@ -1,58 +1,75 @@
-const inputs = document.getElementsByTagName("input");
-const colNb = 9;
+const cells = document.getElementsByTagName('td');
+const states = ['input', 'generated', 'error'];
+const DEFAULT_STATE = states[0];
+
 let row;
 let col;
 
+/* Set the default state */
+for (var i = 0; i < cells.length; i++) {
+    cells[i].className = DEFAULT_STATE;
+}
+
+/* ------------------- TEMP --------------------- */
+
+/*
+ * Fill the whole table (easier than doing it in raw html)
+ */
+const fillValues = [1, 2, 3, 1, 2, 3, 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6,
+                    7, 8, 9, 7, 8, 9, 7, 8, 9, 1, 2, 3, 1, 2, 3, 1, 2, 3,
+                    4, 5, 6, 4, 5, 6, 4, 5, 6, 7, 8, 9, 7, 8, 9, 7, 8, 9,
+                    1, 2, 3, 1, 2, 3, 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6,
+                    7, 8, 9, 7, 8, 9, 7, 8, 9, 1, 2, 3, 1, 2, 3, 1, 2, 3,
+                    4, 5, 6, 4, 5, 6, 4, 5, 6, 7, 8, 9, 7, 8, 9, 7, 8, 9];
+for (var i = 0; i < cells.length; i++) {
+    cells[i].innerHTML = fillValues[i];
+}
+
+/*
+ * Set random states from states[] for testing purposes
+ */
+function SetRandomStates() {
+    let tmpRow;
+    let tmpCol;
+    let tmpState;
+    for (var i = 0; i < 81 ; i++) {
+        [tmpRow, tmpCol] = indexToRowCol(i);
+        tmpState = states[Math.floor(Math.random() *3)];
+        SetCellState(tmpRow, tmpCol, tmpState);
+    }
+}
+/* ------------------- TEMP --------------------- */
+
 /*
  * Alter a given cell (row, column) with one of the following states :
- * 'default' :   Default style
+ * 'input' :     Indicate that the cell is editable by the player.
  * 'generated' : Indicate that the cell has been set by the program. The player
  *               is not able to modify its value.
  * 'error' :     Indicate that the cell is invalid according to the game rules.
  * @param row    Row index (0-9)
  * @param col    Column index (0-9)
  * @param state  Style to apply to the stated cell
- * @return state or -1 if an error occured
+ * @return state or -1 state is unknown
  */
 function SetCellState(row, col, state) {
 
-    if (   0 < row && row <= colNb
-        && 0 < col && col <= colNb) {
+    if (states.includes(state)) {
 
-        let cellNb = rowColToIndex(row, col, colNb);
+        let cellNb = rowColToIndex(row, col);
 
-        /* Reset cell */
-        inputs[cellNb].className = '';
-        inputs[cellNb].parentNode.className = '';
-
-        /* Set to [not] editable.
-         * Set DEFAULT_STATE to 'default' to switch the default mode
-         * to generated */
-        const DEFAULT_STATE = 'generated';
-        inputs[cellNb].readOnly = state == DEFAULT_STATE;
-
-        if (state == 'default') {
-            inputs[cellNb].className = 'input';
-        } else {
-
-            /* <input> style */
-            inputs[cellNb].className = 'input ' + state;
-
-            if (state == 'error') {
-                /* parentNode refers to the <td>. Necessary in order to get the
-                 * background color right */
-                inputs[cellNb].parentNode.className = 'bg-' + state;
-            }
-        }
+        /* Reset stated cell */
+        cells[cellNb].className = DEFAULT_STATE;
+        cells[cellNb].className += ' ' + state;
 
     } else {
-        console.log('Invalid cell coordinates');
+
+        console.log('Unknown state.');
         return -1;
+
     }
 
     return state;
 }
-
 
 /*
  * Set the value of a given cell (row, column) with the passed value
@@ -62,41 +79,70 @@ function SetCellState(row, col, state) {
  * @return value or -1 if an error occured
  */
 function SetCellValue(row, col, value) {
-    value = value == undefined ? "" : value;
-    console.log(row + "," + col + "," + value);
 
-    if (   0 < row && row <= colNb
-        && 0 < col && col <= colNb) {
+    if (1 <= value && value <= 9) {
 
-        let cellNb = rowColToIndex(row, col, colNb);
+        let cellNb = rowColToIndex(row, col);
+        cells[cellNb].innerHTML = value;
 
-        inputs[cellNb].value = value;
-        
     } else {
-        console.log('Invalid cell coordinates or invalid value');
+
+        console.log('Invalid value.');
         return -1;
+
     }
 
     return value;
 }
 
-/* Display in the console the row and col of the clicked cell */
-let clickedElement;
-window.onclick = e => {
-    clickedElement = e.target;
-    if (clickedElement.tagName == 'INPUT') {
-        for (var i = 0; i < inputs.length; i++) {
-            if (clickedElement === inputs[i]) {
-                [row, col] = indexToRowCol(i, colNb);
-                console.log(row, col);
-            }
+
+/*
+ * Get the cliked element to apply the focus state to the cell,
+ * and it's row and column aswell
+ */
+$('.input').click(function(e){
+    let clickedElementIndex;
+
+    /* Find the index of the clicked element */
+    for (var i = 0; i < cells.length; i++) {
+        if(this == cells[i]) {
+            clickedElementIndex = i;
+        }
+    }
+
+    /* TODO check if editable (use a boolean) */
+
+    /* Set to focus state */
+    UnfocusAllCells();
+    cells[clickedElementIndex].className += ' focus';
+
+    /* TODO select row */
+
+    /* TODO select column */
+
+
+})
+
+/*
+ * Remove the focus state to all cells
+ */
+function UnfocusAllCells() {
+    let tempClassName;
+    for (var i = 0; i < cells.length; i++) {
+        if (cells[i].className.includes('focus')) {
+
+            tempClassName = cells[i].className.substring(0, cells[i].className.length -6);
+            cells[i].className = tempClassName;
+
         }
     }
 }
 
-function DrawSudoku(){
-    for(let i = 0; i < 81; i++){
-        let [row, col] = indexToRowCol(i);
-        SetCellValue(row, col, sudokuGrid[i]);
+/*
+ * Set the default state (const DEFAULT_STATE) to all the cells
+ */
+function ResetAllCells() {
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].className = DEFAULT_STATE;
     }
 }

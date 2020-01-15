@@ -3,288 +3,128 @@
 <head>
 	<meta charset="utf-8">
 	<title>Sudoku</title>
-	<script src="common/common.js"></script>
-	<script src="grid.js"></script>
-	<script src="Sudoku.js"></script>
 	<link rel="stylesheet" type="text/css" href="./Sudoku.css">
+	<script src="./jquery-3.4.1.js"></script>
+	<script src="./common/common.js"></script>
 </head>
 <body>
 
 	<div class="container">
 		<h1>Une bien jolie grille</h1>
+		<h6>Regarde vers le Nord, tu auras le Sudoku</h6>
 		<table>
 			<!-- Top Left Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Top Center Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Top Rigth Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Middle Left Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Middle Center Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Middle Right Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Bottom Left Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="1">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="2">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="3">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Bottom Center Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="4">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="5">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="6">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<!-- Bottom Right Grid -->
 			<tr>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="7">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="8">
-				</td>
-				<td>
-					<input class="input" type="text" maxlength="1" value="9">
-				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</table>
 	</div>
+
+	<script src="Sudoku.js"></script>
 
 </body>
 </html>
